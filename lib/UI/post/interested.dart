@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InterestedUsers extends StatelessWidget {
   final CollectionReference<Map<String, dynamic>> interestedUsersCollection =
@@ -11,11 +12,18 @@ class InterestedUsers extends StatelessWidget {
     await interestedUsersCollection.doc(documentId).delete();
   }
 
+  Future<void> _launchDialPad(String phoneNumber) async {
+    final Uri phoneLaunchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launch(phoneLaunchUri.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
         title: const Text('Interested Users'),
         backgroundColor: const Color.fromARGB(255, 248, 155, 201),
       ),
@@ -28,8 +36,7 @@ class InterestedUsers extends StatelessWidget {
                   .where('donorUserId', isEqualTo: currentUser!.uid)
                   .snapshots(),
               builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
-                      snapshot) {
+                  AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
                 if (snapshot.hasError) {
                   return Center(
                     child: Text('Error: ${snapshot.error}'),
@@ -61,7 +68,18 @@ class InterestedUsers extends StatelessWidget {
 
                     return ListTile(
                       title: Text(interestedUserName),
-                      subtitle: Text(interestedUserPhone),
+                      subtitle: GestureDetector(
+                        child: Text(
+                          interestedUserPhone,
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue,
+                          ),
+                        ),
+                        onTap: () {
+                          _launchDialPad(interestedUserPhone);
+                        },
+                      ),
                       trailing: IconButton(
                         icon: Icon(Icons.delete, color: Colors.red),
                         onPressed: () {
