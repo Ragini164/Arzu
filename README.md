@@ -1,16 +1,15 @@
-# arzu
+# Arzu
 
-A new Flutter project.
+Arzu is a mobile application designed to combat food waste and promote sustainability in Pakistan. Inspired by the successful "Too Good To Go" model, our app allows users to share surplus food from restaurants, events, and home gatherings, all for free.
 
-## Getting Started
+How It Works:
 
-This project is a starting point for a Flutter application.
+Donation: Individuals, restaurants, and event organizers can use the app to list surplus food items with descriptions, quantities, and pickup/delivery details. Become a donor and share your excess food to reduce waste.
 
-A few resources to get you started if this is your first Flutter project:
+Consumption: The app provides available surplus food listings for those facing food insecurity. Become a consumer to access free meals and help reduce food waste.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Donation or Consumption Places: In cases where there are no available donors or consumers, users have the option to explore designated donation or consumption places. These places are dedicated to sharing surplus food within the community.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Mission:
+
+Our mission is to create a more sustainable future by reducing food waste and minimizing the carbon footprint of the food industry in Pakistan while ensuring that surplus food is accessible to all, free of cost. 
